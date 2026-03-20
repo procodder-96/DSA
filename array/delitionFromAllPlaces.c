@@ -1,35 +1,28 @@
 #include <stdio.h>
 
-int main() {
-    int n, target;
+void reverse(int a[], int n) {
+    for(int i = 0; i < n / 2; i++) {
+        int temp = a[i];
+        a[i] = a[n - i - 1];
+        a[n - i - 1] = temp;
+    }
+}
 
-    printf("Enter the size of array: ");
+int main() {
+    int n;
+
+    printf("Enter size: ");
     scanf("%d", &n);
 
     int a[n];
 
-    // Input elements
     for(int i = 0; i < n; i++) {
-        printf("Enter element: ");
         scanf("%d", &a[i]);
     }
 
-    printf("Enter the target: ");
-    scanf("%d", &target);
+    reverse(a, n);
 
-    // Deletion logic
-    for(int i = 0; i < n; i++) {
-        if(a[i] == target) {
-            for(int j = i; j < n - 1; j++) {
-                a[j] = a[j + 1];
-            }
-            n--;   // reduce size
-            i--;   // recheck current index
-        }
-    }
-
-    // Print result
-    printf("Array after deletion:\n");
+    printf("Reversed array:\n");
     for(int i = 0; i < n; i++) {
         printf("%d ", a[i]);
     }
